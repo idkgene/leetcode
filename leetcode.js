@@ -1,4 +1,4 @@
-/** 1. Two Sum
+/** 1. Two Sum (Easy)
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 Example 1:
@@ -36,7 +36,7 @@ var twoSum = function (nums, target) {
   }
 };
 
-/** 2. Add Two Numbers
+/** 2. Add Two Numbers (Medium)
  * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
@@ -85,7 +85,7 @@ var addTwoNumbers = function (l1, l2) {
   return dummy.next;
 };
 
-/** 3. Longest Substring Without Repeating Characters
+/** 3. Longest Substring Without Repeating Characters (Medium)
  * Given a string s, find the length of the longest 
 substring
  without repeating characters.
@@ -136,7 +136,7 @@ var lengthOfLongestSubstring = function (s) {
   return maxLength;
 };
 
-/** 201. Bitwise AND of Numbers Range
+/** 201. Bitwise AND of Numbers Range (Medium)
  * Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
 
  
@@ -175,7 +175,7 @@ var rangeBitwiseAnd = function (left, right) {
   return left << shift;
 };
 
-/** 264. Ugly Number II
+/** 264. Ugly Number II (Medium)
  * An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
 
 Given an integer n, return the nth ugly number.
@@ -223,7 +223,7 @@ var nthUglyNumber = function (n) {
   return dp[n - 1];
 };
 
-/** 319. Bulb Switcher
+/** 319. Bulb Switcher (Medium)
 There are n bulbs that are initially off. You first turn on all the bulbs, then you turn off every second bulb.
 
 On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb.
