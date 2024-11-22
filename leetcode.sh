@@ -21,7 +21,7 @@
 # is 3
 # sunny 2
 # day 1
-# Note:
+
 cat words.txt | tr -s ' ' '\n' | sort | uniq -c | sort -nr | awk '{print $2" "$1}'
 
 
@@ -45,6 +45,7 @@ cat words.txt | tr -s ' ' '\n' | sort | uniq -c | sort -nr | awk '{print $2" "$1
 
 # 987-123-4567
 # (123) 456-7890
+
 grep -P '^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$' file.txt
 
 
@@ -65,6 +66,7 @@ grep -P '^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$' file.txt
 
 # name alice ryan
 # age 21 30
+
 awk '{
     for (i = 1; i <= NF; i++) {
         if (NR == 1) {
@@ -103,7 +105,5 @@ END {
 # Your script should output the tenth line, which is:
 
 # Line 10
-# Note:
-# 1. If the file contains less than 10 lines, what should you output?
-# 2. There's at least three different solutions. Try to explore all possibilities.
+
 sed '10q;d' file.txt || echo "< 10 lines"

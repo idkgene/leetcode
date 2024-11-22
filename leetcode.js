@@ -1,5 +1,7 @@
-/** 1. Two Sum (Easy)
- * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+/** 
+1. Two Sum (Easy)
+ 
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 Example 1:
 
@@ -21,7 +23,8 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 Only one valid answer exists.
- */
+*/
+
 var twoSum = function (nums, target) {
   const map = new Map();
 
@@ -36,13 +39,14 @@ var twoSum = function (nums, target) {
   }
 };
 
-/** 2. Add Two Numbers (Medium)
- * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+/** 
+2. Add Two Numbers (Medium)
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
 Example 1:
-
 
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
@@ -56,13 +60,13 @@ Example 3:
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
  
-
 Constraints:
 
 The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
- */
+*/
+
 var addTwoNumbers = function (l1, l2) {
   const dummy = new ListNode(0);
   let curr = dummy;
@@ -85,12 +89,13 @@ var addTwoNumbers = function (l1, l2) {
   return dummy.next;
 };
 
-/** 3. Longest Substring Without Repeating Characters (Medium)
- * Given a string s, find the length of the longest 
-substring
- without repeating characters.
 
- 
+
+/** 
+3. Longest Substring Without Repeating Characters (Medium)
+
+Given a string s, find the length of the longest 
+substring without repeating characters.
 
 Example 1:
 
@@ -114,7 +119,8 @@ Constraints:
 
 0 <= s.length <= 5 * 104
 s consists of English letters, digits, symbols and spaces.
- */
+*/
+
 var lengthOfLongestSubstring = function (s) {
   const lastSeen = new Map();
 
@@ -136,10 +142,12 @@ var lengthOfLongestSubstring = function (s) {
   return maxLength;
 };
 
-/** 201. Bitwise AND of Numbers Range (Medium)
- * Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
 
- 
+
+/** 
+201. Bitwise AND of Numbers Range (Medium)
+
+Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
 
 Example 1:
 
@@ -158,7 +166,8 @@ Output: 0
 Constraints:
 
 0 <= left <= right <= 231 - 1
- */
+*/
+
 var rangeBitwiseAnd = function (left, right) {
   if (left === right) return left;
 
@@ -175,12 +184,14 @@ var rangeBitwiseAnd = function (left, right) {
   return left << shift;
 };
 
-/** 264. Ugly Number II (Medium)
- * An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
+
+
+/** 
+264. Ugly Number II (Medium)
+
+An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
 
 Given an integer n, return the nth ugly number.
-
- 
 
 Example 1:
 
@@ -197,7 +208,8 @@ Explanation: 1 has no prime factors, therefore all of its prime factors are limi
 Constraints:
 
 1 <= n <= 1690
- */
+*/
+
 var nthUglyNumber = function (n) {
   const dp = new Array(n);
   dp[0] = 1;
@@ -223,17 +235,17 @@ var nthUglyNumber = function (n) {
   return dp[n - 1];
 };
 
-/** 319. Bulb Switcher (Medium)
+
+/**
+319. Bulb Switcher (Medium)
+
 There are n bulbs that are initially off. You first turn on all the bulbs, then you turn off every second bulb.
 
 On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb.
 
 Return the number of bulbs that are on after n rounds.
 
- 
-
 Example 1:
-
 
 Input: n = 3
 Output: 1
@@ -256,6 +268,7 @@ Constraints:
 
 0 <= n <= 109
  */
+
 var bulbSwitch = function (n) {
   return Math.floor(Math.sqrt(n));
 };
