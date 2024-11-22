@@ -36,7 +36,6 @@ var twoSum = function (nums, target) {
   }
 };
 
-
 /** 2. Add Two Numbers
  * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
@@ -64,26 +63,26 @@ The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
  */
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
   const dummy = new ListNode(0);
   let curr = dummy;
   let carry = 0;
 
   while (l1 || l2 || carry) {
-      const x = l1 ? l1.val : 0;
-      const y = l2 ? l2.val : 0;
+    const x = l1 ? l1.val : 0;
+    const y = l2 ? l2.val : 0;
 
-      const sum = x + y + carry;
-      carry = Math.floor(sum / 10);
+    const sum = x + y + carry;
+    carry = Math.floor(sum / 10);
 
-      curr.next = new ListNode(sum % 10);
-      curr = curr.next;
+    curr.next = new ListNode(sum % 10);
+    curr = curr.next;
 
-      l1 = l1 ? l1.next : null;
-      l2 = l2 ? l2.next : null;
+    l1 = l1 ? l1.next : null;
+    l2 = l2 ? l2.next : null;
   }
 
-  return dummy.next
+  return dummy.next;
 };
 
 /** 3. Longest Substring Without Repeating Characters
@@ -116,27 +115,26 @@ Constraints:
 0 <= s.length <= 5 * 104
 s consists of English letters, digits, symbols and spaces.
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   const lastSeen = new Map();
-  
-  let maxLength = 0;  
+
+  let maxLength = 0;
   let windowStart = 0;
-  
+
   for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
-      const currentChar = s[windowEnd];
-      
-      if (lastSeen.has(currentChar)) {
-          windowStart = Math.max(windowStart, lastSeen.get(currentChar) + 1);
-      }
-      
-      lastSeen.set(currentChar, windowEnd);
-      
-      maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+    const currentChar = s[windowEnd];
+
+    if (lastSeen.has(currentChar)) {
+      windowStart = Math.max(windowStart, lastSeen.get(currentChar) + 1);
+    }
+
+    lastSeen.set(currentChar, windowEnd);
+
+    maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
   }
-  
+
   return maxLength;
 };
-
 
 /** 201. Bitwise AND of Numbers Range
  * Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
@@ -161,7 +159,7 @@ Constraints:
 
 0 <= left <= right <= 231 - 1
  */
-var rangeBitwiseAnd = function(left, right) {
+var rangeBitwiseAnd = function (left, right) {
   if (left === right) return left;
 
   if (left === 0) return 0;
@@ -169,10 +167,58 @@ var rangeBitwiseAnd = function(left, right) {
   let shift = 0;
 
   while (left !== right) {
-      left >>= 1;
-      right >>= 1;
-      shift++;
+    left >>= 1;
+    right >>= 1;
+    shift++;
   }
 
   return left << shift;
+};
+
+/** 264. Ugly Number II
+ * An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
+
+Given an integer n, return the nth ugly number.
+
+ 
+
+Example 1:
+
+Input: n = 10
+Output: 12
+Explanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of the first 10 ugly numbers.
+Example 2:
+
+Input: n = 1
+Output: 1
+Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
+ 
+
+Constraints:
+
+1 <= n <= 1690
+ */
+var nthUglyNumber = function (n) {
+  const dp = new Array(n);
+  dp[0] = 1;
+
+  let p2 = 0,
+    p3 = 0,
+    p5 = 0;
+
+  let next2, next3, next5;
+
+  for (let i = 1; i < n; i++) {
+    next2 = dp[p2] * 2;
+    next3 = dp[p3] * 3;
+    next5 = dp[p5] * 5;
+
+    dp[i] = Math.min(next2, next3, next5);
+
+    if (dp[i] === next2) p2++;
+    if (dp[i] === next3) p3++;
+    if (dp[i] === next5) p5++;
+  }
+
+  return dp[n - 1];
 };
