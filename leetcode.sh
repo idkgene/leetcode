@@ -46,3 +46,36 @@ cat words.txt | tr -s ' ' '\n' | sort | uniq -c | sort -nr | awk '{print $2" "$1
 # 987-123-4567
 # (123) 456-7890
 grep -P '^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$' file.txt
+
+
+# 194. Transpose File (Medium)
+
+# Given a text file file.txt, transpose its content.
+
+# You may assume that each row has the same number of columns, and each field is separated by the ' ' character.
+
+# Example:
+
+# If file.txt has the following content:
+
+# name age
+# alice 21
+# ryan 30
+# Output the following:
+
+# name alice ryan
+# age 21 30
+awk '{
+    for (i = 1; i <= NF; i++) {
+        if (NR == 1) {
+            a[i] = $i
+        } else {
+            a[i] = a[i] " " $i
+        }
+    }
+}
+END {
+    for (i = 1; i <= NF; i++) {
+        print a[i]
+    }
+}' file.txt
